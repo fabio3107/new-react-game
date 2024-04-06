@@ -4,6 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function FilterableProductTable() {
+
+  const [filterText, setFilterText] = useState('');
+  const [inStockOnly, setInStockOnly] = useState(false);
+
   let prodotti = [
     { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
     { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
@@ -14,8 +18,13 @@ function FilterableProductTable() {
   ];
   return (
     <div class="FilterableProductTable">
-      <SearchBar />
-      < ProductTable prodotti={prodotti} />
+      <SearchBar 
+        filterText={filterText}
+        inStockOnly={inStockOnly} />
+      <ProductTable
+        prodotti={prodotti} 
+        filterText={filterText}
+        inStockOnly={inStockOnly} />
     </div>
   )
 }
